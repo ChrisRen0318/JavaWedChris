@@ -103,10 +103,10 @@ public class cs16 extends HttpServlet {
 			PreparedStatement pstmt=
 			conn.prepareStatement("update member set account=?,passwd=?,realname=?"
 					+ " where id=?");
-			pstmt.setString(1, updateid);
-			pstmt.setString(2, account);
-			pstmt.setString(3, passwd);
-			pstmt.setString(4, realname);
+			pstmt.setString(1, account);
+			pstmt.setString(2, passwd);
+			pstmt.setString(3, realname);
+			pstmt.setString(4, updateid);
 			pstmt.execute();
 		} catch (SQLException e) {
 			System.out.println(e.toString());
@@ -158,9 +158,9 @@ public class cs16 extends HttpServlet {
 			"<td><a href=?delid=%s onclick='return isDelete(\"%s\");'>Delete</a></td>",
 					row.get(fileds[0]),row.get(fileds[1])));
 			
-			//註解下兩段OK~打開之後出錯~但我找不到問題!!!!!!!!!!!!!!!!			
-//			out.print(String.format("<td><a href='cs17?editid=%s>Edit</a></td>",
-//					row.get(fileds[0])));
+						
+			out.print(String.format("<td><a href='cs17?editid=%s>Edit</a></td>",
+					row.get(fileds[0])));
 			out.print("</tr>");
 		}
 		
