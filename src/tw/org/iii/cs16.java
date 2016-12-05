@@ -158,6 +158,7 @@ public class cs16 extends HttpServlet {
 			"<td><a href=?delid=%s onclick='return isDelete(\"%s\");'>Delete</a></td>",
 					row.get(fileds[0]),row.get(fileds[1])));
 			
+			//註解下兩段OK~打開之後出錯~但我找不到問題!!!!!!!!!!!!!!!!			
 //			out.print(String.format("<td><a href='cs17?editid=%s>Edit</a></td>",
 //					row.get(fileds[0])));
 //			out.print("</tr>");
