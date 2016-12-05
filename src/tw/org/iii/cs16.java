@@ -161,7 +161,7 @@ public class cs16 extends HttpServlet {
 			//註解下兩段OK~打開之後出錯~但我找不到問題!!!!!!!!!!!!!!!!			
 //			out.print(String.format("<td><a href='cs17?editid=%s>Edit</a></td>",
 //					row.get(fileds[0])));
-//			out.print("</tr>");
+			out.print("</tr>");
 		}
 		
 		out.print("</table>");
