@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 public class cs16 extends HttpServlet {
 	private PrintWriter out;
 	private Connection conn = null;
-	private String[] fileds ={"id","account","passwd","realname"};
+	private String[] fields ={"id","account","passwd","realname"};
 	
 	@Override
 	public void init() throws ServletException {
@@ -40,7 +40,6 @@ public class cs16 extends HttpServlet {
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		
 		response.setContentType("text/html;charset=utf-8");
 		out = response.getWriter();
@@ -62,8 +61,6 @@ public class cs16 extends HttpServlet {
 			String realname = request.getParameter("realname");
 			editData(updateid, account, passwd, realname);
 		}
-		
-		
 		
 		
 		ontHTML(queryData());
@@ -101,8 +98,13 @@ public class cs16 extends HttpServlet {
 	private void editData(String updateid, String account,String passwd,String realname){
 		try {
 			PreparedStatement pstmt=
+
+			conn.prepareStatement("update member set account=?,passwd=?,realname=? where id = ?");
+								  
+
 			conn.prepareStatement("update member set account=?,passwd=?,realname=?"
 					+ " where id=?");
+
 			pstmt.setString(1, account);
 			pstmt.setString(2, passwd);
 			pstmt.setString(3, realname);
@@ -122,8 +124,8 @@ public class cs16 extends HttpServlet {
 			
 			while(rs.next()){
 				HashMap<String, String> row=new HashMap<>();
-				for(String filed :fileds){
-					row.put(filed, rs.getString(filed));
+				for(String field :fields){
+					row.put(field, rs.getString(field));
 				}
 				data.add(row);
 			}
@@ -151,25 +153,22 @@ public class cs16 extends HttpServlet {
 		
 		for(HashMap<String, String> row : data){
 			out.print("<tr>");
-			for(String filed :fileds){
-				out.print(String.format("<td>%s</td>",row.get(filed)));
+			for(String field :fields){
+				out.print(String.format("<td>%s</td>",row.get(field)));
 			}
 			out.print(String.format(
-			"<td><a href=?delid=%s onclick='return isDelete(\"%s\");'>Delete</a></td>",
-					row.get(fileds[0]),row.get(fileds[1])));
+			"<td><a href=?delid=%s onclick='return isDelete(\"%s\")';>Delete</a></td>",
+					row.get(fields[0]),row.get(fields[1])));
 			
-						
-			out.print(String.format("<td><a href='cs17?editid=%s'>Edit</a></td>",
-					row.get(fileds[0])));
+			out.println(String.format("<td><a href='cs17?editid=%s'>Edit</a></td>",row.get(fields[0])));
+			
+
 			out.print("</tr>");
 		}
 		
 		out.print("</table>");
 	}
 	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+	
 
 }
