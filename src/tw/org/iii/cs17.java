@@ -74,15 +74,15 @@ public class cs17 extends HttpServlet {
 	private void outHTML(HashMap<String, String> row){
 		out.println("<meta http-equiv='Content-Type' content='text/html; charset=utf-8'>");
 		out.println("<form action='cs16'>");
-		out.println(String.format("<input type='hidden' name='updateid' value= %s/><br/>",
+		out.println(String.format("<input type='hidden' name='updateid' value='%s/'><br/>",
 				row.get("id")));
-		out.println(String.format("Account:<input type='text' name='account' value=%s/><br />",
+		out.println(String.format("Account:<input type='text' name='account' value='%s'/><br />",
 				row.get("account")));
-		out.println(String.format("Password:<input type='text' name='passwd' value=%s/><br />",
+		out.println(String.format("Password:<input type='text' name='passwd' value='%s'/><br />",
 				row.get("passwd")));
-		out.println(String.format("Realname:<input type='text' name='realname' value=%s/><br />",
+		out.println(String.format("Realname:<input type='text' name='realname' value='%s'/><br />",
 				row.get("realname")));
-		out.println("<input type='submit' name='type' value=edit/><br />");
+		out.println("<input type='submit' name='type' value='edit'/><br />");
 		out.print("</form>");
 	}
 
