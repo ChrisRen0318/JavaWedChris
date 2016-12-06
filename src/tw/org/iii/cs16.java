@@ -159,7 +159,7 @@ public class cs16 extends HttpServlet {
 					row.get(fileds[0]),row.get(fileds[1])));
 			
 						
-			out.print(String.format("<td><a href='cs17?editid=%s>Edit</a></td>",
+			out.print(String.format("<td><a href='cs17?editid=%s'>Edit</a></td>",
 					row.get(fileds[0])));
 			out.print("</tr>");
 		}
