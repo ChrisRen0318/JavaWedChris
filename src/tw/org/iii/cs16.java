@@ -102,8 +102,7 @@ public class cs16 extends HttpServlet {
 			conn.prepareStatement("update member set account=?,passwd=?,realname=? where id = ?");
 								  
 
-			conn.prepareStatement("update member set account=?,passwd=?,realname=?"
-					+ " where id=?");
+			
 
 			pstmt.setString(1, account);
 			pstmt.setString(2, passwd);
